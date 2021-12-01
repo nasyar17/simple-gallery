@@ -1,0 +1,144 @@
+/* Font */
+@font-face {
+	font-family: "BebasNeue";
+	src: url(../fonts/BebasNeue.woff) format('woff');
+}
+
+/* Style Utama */
+body {
+	font: 18px/36px 'BebasNeue', 'Arial', sans-serif;
+	background-color: #d3d3d3;
+}
+h1 {
+	font-size: 80px;
+	margin: 50px 0;
+	text-align: center;
+}
+.container {
+	background-color: #f5f5f5;
+	width: 800px;
+	margin: auto;
+	padding: 40px;
+	padding-bottom: 0;
+	border-radius: 7px;
+	box-shadow: 10px 10px 15px 4px rgba(0,0,0,.2);
+}
+.gallery li,
+.gallery .thumb,
+.gallery span {
+	border-radius: 50%;
+}
+.gallery li {
+	width: 150px;
+	height: 150px;
+	border: 5px solid #848484;
+	float: left;
+	margin-right: 40px;
+	margin-bottom: 40px;
+	position: relative;
+}
+.gallery li span {
+	width: 150px;
+	height: 150px;
+	font-size: 25px;
+	display: block;
+	background-color: rgba(200,200,200,0.3);
+	position: absolute;
+	top: 0;
+	text-align: center;
+	line-height: 150px;
+	color: #333;
+	text-shadow: 1px 1px 1px #ddd;
+	opacity: 0;
+	transition: .3s;
+	transform: scale(0), rotate(0);
+}
+.gallery li a:hover span {
+	opacity: 1;
+	transform: scale(1) rotate(720deg);
+}
+.gallery li a:hover img {
+	filter: blur(3px);
+}
+
+/* overlay */
+.overlay {
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	text-align: center;
+	padding: 80px 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0);
+	z-index: 9999;
+	transition: .55s;
+}
+.overlay:target {
+	width: auto;
+	height: auto;
+	bottom: 0;
+	right: 0;
+	background-color: rgba(0,0,0,0.7);
+}
+.overlay img {
+	max-height: 100%;
+	box-shadow: 2px 2px 7px rgba(0,0,0,.5)
+}
+.overlay:target img {
+	animation: fade 0.5s;
+}
+.overlay .close {
+	position: absolute;
+	top: 40px;
+	left: 50%;
+	margin-left: -30px;
+	background-color: #ba132f;
+	line-height: 12px;
+	padding: 10px;
+	color: white;
+	text-decoration: none;
+	opacity: 0;
+}
+.overlay:target .close {
+	animation: slideDown .5s forwards;
+}
+.overlay:target .next,
+.overlay:target .prev {
+	animation: fade .5s .5s forwards;
+}
+.next , .prev { 
+	width: 50px;
+	height: 80px;
+	background-image: url(../img/next.png);
+	position: absolute;
+	text-indent: -9999px;
+	top: 280px;
+	margin-left: 30px;
+	opacity: 0;
+}
+.prev {
+	background-image: url(../img/prev.png);
+	margin-left: -80px;
+}
+
+/* animasi */
+@keyframes fade {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes slideDown {
+	0% {
+		margin-top: -20px;
+	}
+	100% {
+		opacity: 1;
+		margin-top: 0;
+	}
+}
